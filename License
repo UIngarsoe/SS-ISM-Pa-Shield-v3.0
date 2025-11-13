@@ -1,0 +1,85 @@
+### 2. core_demo.py (your code, slightly cleaned + header)
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+SS'ISM Paññā Shield v3.0 — Core Ethical Fusion Engine Demo
+Author: U Ingar Soe | Launch: 13 November 2025
+License: AGPL-3.0 + Ethical Use Clause
+"""
+
+import numpy as np
+from typing import Dict, Any
+
+# === PROJECT CONFIGURATION & PROTECTED KERNEL ===
+PROJECT_NAME = "SS'ISM Paññā Shield"
+VERSION = "3.0"
+MANDATE_QUOTE = "When vetoes silence justice, data becomes resistance."
+
+PROTECTED_KERNEL_COEFFICIENTS: Dict[str, float] = {
+    'W_Sila_Concept': 0.95,
+    'W_Samadhi_Concept': 0.88,
+    'W_Panna_Concept': 1.00,
+    'Karmic_Blockage_Bias': 0.15,
+    'PsyWar_Risk_Weight_Placeholder': 1.15
+}
+
+# === 1. SĪLA — Atrocity Index (H) ===
+def calculate_atrocity_index(V_satellite: float, V_osint: float, V_veto_time: float) -> float:
+    W_SATELLITE_CONCEPT = 0.45; W_OSINT_CONCEPT = 0.35; W_VETO_CONCEPT = 0.20
+    return (W_SATELLITE_CONCEPT * V_satellite) + (W_OSINT_CONCEPT * V_osint) + (W_VETO_CONCEPT * V_veto_time)
+
+# === 2. SAMĀDHI — Paññā Fusion Engine ===
+def calculate_fused_likelihood(V14_atrocity: float, V15_scg: float, V16_psywar_noise: float) -> float:
+    W_Foresight = PROTECTED_KERNEL_COEFFICIENTS['W_Samadhi_Concept'] * 1.0
+    W_Social    = PROTECTED_KERNEL_COEFFICIENTS['W_Samadhi_Concept'] * 0.9
+    W_Context   = PROTECTED_KERNEL_COEFFICIENTS['W_Samadhi_Concept'] * 1.1
+    B_Karmic    = PROTECTED_KERNEL_COEFFICIENTS['Karmic_Blockage_Bias']
+    
+    log_likelihood = (
+        W_Foresight * np.log(max(V14_atrocity, 1e-9)) +
+        W_Social    * np.log(max(V15_scg, 1e-9)) +
+        W_Context   * np.log(max(V16_psywar_noise, 1e-9))
+    ) - B_Karmic
+    return np.exp(log_likelihood)
+
+# === 3. TCE — PsyWar Noise from Ghost Node Intelligence ===
+def calculate_psywar_noise(GhostNode_Certainty: float, Network_Anomaly_Score: float) -> float:
+    RISK_INVERSE = 1.0 - GhostNode_Certainty
+    return max(RISK_INVERSE * Network_Anomaly_Score, 1e-9)
+
+# === 4. PAÑÑĀ — Wisdom Decision Gate ===
+def paññā_fusion_decision(raw_action: str, is_laukī_cup_action: bool, is_wisdom_work: bool, is_user_constrained: bool) -> str:
+    if not is_wisdom_work:
+        return "VOID: Decision failed the Wisdom Decision Gate (Paññā Work Required)."
+    if is_laukī_cup_action and is_user_constrained:
+        return f"A' (SIS): Engage in 'Paññā Work' related to '{raw_action}' → Laukī Water-Cup activated."
+    return raw_action
+
+# === DEMO EXECUTION ===
+if __name__ == '__main__':
+    print(f"\n🛡️ {PROJECT_NAME} v{VERSION} — Live Ethical Fusion Test\n")
+    
+    GHOST_NODE_CONFIDENCE = 0.85
+    NETWORK_BURST_ANOMALY = 1.25
+    V16 = calculate_psywar_noise(GHOST_NODE_CONFIDENCE, NETWORK_BURST_ANOMALY)
+    print(f"1. TCE → PsyWar Noise (V16): {V16:.4f}")
+    
+    H = calculate_atrocity_index(0.85, 0.75, 0.90)
+    print(f"2. Sīla → Atrocity Index (H): {H:.4f}")
+    
+    L_fused = calculate_fused_likelihood(H, V15_scg=0.77, V16_psywar_noise=V16)
+    Phi_A = np.tanh(L_fused) * 0.9
+    
+    print(f"3. Samādhi → Fused Likelihood (L_fused): {L_fused:.4f}")
+    print(f"   Accountability Likelihood (Φ_A): {Phi_A:.3f}")
+    
+    if Phi_A > 0.20:
+        action = paññā_fusion_decision(
+            raw_action="Deploy verified counter-narrative + legal challenge package",
+            is_laukī_cup_action=False, is_wisdom_work=True, is_user_constrained=True
+        )
+        print(f"\nFINAL MANDATE → {action} | Φ_A = {Phi_A:.4f}")
+    else:
+        print("\nFINAL MANDATE → MONITOR (Insufficient ethical certainty)")
